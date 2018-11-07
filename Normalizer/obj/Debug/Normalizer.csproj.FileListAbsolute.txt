@@ -1,0 +1,12 @@
+C:\Users\joach\source\repos\LoanBroker\Normalizer\bin\Debug\Normalizer.exe.config
+C:\Users\joach\source\repos\LoanBroker\Normalizer\bin\Debug\Normalizer.exe
+C:\Users\joach\source\repos\LoanBroker\Normalizer\bin\Debug\Normalizer.pdb
+C:\Users\joach\source\repos\LoanBroker\Normalizer\obj\Debug\Normalizer.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\LoanBroker\Normalizer\obj\Debug\Normalizer.exe
+C:\Users\joach\source\repos\LoanBroker\Normalizer\obj\Debug\Normalizer.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\bin\Debug\Normalizer.exe.config
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\bin\Debug\Normalizer.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\bin\Debug\Normalizer.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\obj\Debug\Normalizer.csproj.CoreCompileInputs.cache
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\obj\Debug\Normalizer.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\Normalizer\obj\Debug\Normalizer.pdb

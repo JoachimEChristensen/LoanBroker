@@ -1,0 +1,12 @@
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.exe.config
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.exe
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.pdb
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\obj\Debug\TranslateJSON.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\obj\Debug\JSONTranslate.exe
+C:\Users\joach\source\repos\LoanBroker\JSONTranslate\obj\Debug\JSONTranslate.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.exe.config
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\bin\Debug\JSONTranslate.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\obj\Debug\TranslateJSON.csproj.CoreCompileInputs.cache
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\obj\Debug\JSONTranslate.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\JSONTranslate\obj\Debug\JSONTranslate.pdb

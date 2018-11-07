@@ -1,0 +1,12 @@
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\bin\Debug\TranslateXML.exe.config
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\bin\Debug\TranslateXML.exe
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\bin\Debug\TranslateXML.pdb
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\obj\Debug\TranslateXML.csproj.CoreCompileInputs.cache
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\obj\Debug\TranslateXML.exe
+C:\Users\joach\source\repos\LoanBroker\TranslateXML\obj\Debug\TranslateXML.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\bin\Debug\TranslateXML.exe.config
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\bin\Debug\TranslateXML.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\bin\Debug\TranslateXML.pdb
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\obj\Debug\TranslateXML.csproj.CoreCompileInputs.cache
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\obj\Debug\TranslateXML.exe
+C:\Users\joach\Desktop\Ny mappe\LoanBroker\TranslateXML\obj\Debug\TranslateXML.pdb
