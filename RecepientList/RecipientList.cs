@@ -5,51 +5,113 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Messaging;
 using System.Collections;
+using MessageGateway;
 
 namespace RecipientList
 {
-    class DynamicRecipientList
+    class RecipientList
     {
-        protected MessageQueue inQueue;
-        protected MessageQueue controlQueue;
-        protected IDictionary routingTable = (IDictionary)(new Hashtable());
-        public DynamicRecipientList(MessageQueue inQueue, MessageQueue controlQueue)
+        protected BankList[] banks = { new BankXML(), new BankJSON(), new Bank1(), new Bank2() };
+
+        public IMessageSender[] GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
         {
-            this.inQueue = inQueue;
-            this.controlQueue = controlQueue;
-            inQueue.ReceiveCompleted += new ReceiveCompletedEventHandler(OnMessage);
-            inQueue.BeginReceive();
-            controlQueue.ReceiveCompleted += new
-            ReceiveCompletedEventHandler(OnControlMessage);
-            controlQueue.BeginReceive();
-        }
-        protected void OnMessage(Object source, ReceiveCompletedEventArgs asyncResult)
-        {
-            MessageQueue mq = (MessageQueue)source;
-            mq.Formatter = new System.Messaging.XmlMessageFormatter(new String[]
-            {"System.String,mscorlib"});
-            Message message = mq.EndReceive(asyncResult.AsyncResult);
-            if (((String)message.Body).Length > 0)
+            ArrayList creditors = new ArrayList();
+
+            for (int number = 0; number < banks.Length; number++)
             {
-                char key = ((String)message.Body)[0];
-                ArrayList destinations = (ArrayList)routingTable[key];
-                foreach (MessageQueue destination in destinations)
+                if(banks[number].EligibleLoanRequest(ssn, creditScore, loanDuration, loanAmount))
                 {
-                    destination.Send(message);
-                    Console.WriteLine("sending message " + message.Body + " to " +
-                    destination.Path);
+                    creditors.Add(banks[number].Queue);
                 }
             }
-            mq.BeginReceive();
-        }
-        // control message format is XYZ:QueueName as a single string
-        protected void OnControlMessage(Object source, ReceiveCompletedEventArgs
-        asyncResult)
-        {
-            MessageQueue mq = (MessageQueue)source;
-            mq.Formatter = new System.Messaging.XmlMessageFormatter(new String[]
-            {"System.String,mscorlib"});
 
+            IMessageSender[] creditorArray = (IMessageSender[])Array.CreateInstance(typeof(IMessageSender), creditors.Count);
+            creditors.CopyTo(creditorArray);
+            return creditorArray;
+        }
+
+        internal static class MessageRouter
+        {
+            public static void SendToRecipentList (Message msg, IMessageSender[] recipientList)
+            {
+                IEnumerator enumerator = recipientList.GetEnumerator();
+                while (enumerator.MoveNext())
+                {
+                    ((IMessageSender)enumerator.Current).Send(msg);
+                }
+            }
+        }
+        
+        internal abstract class BankList
+        {
+            protected MessageSenderGateway queue;
+            protected String bankName = "";
+            
+            public MessageSenderGateway Queue
+            {
+                get { return queue; }
+            }
+
+            public String BankName
+            {
+                get { return bankName; }
+            }
+
+            public BankList (MessageQueue queue)
+            {
+              this.queue = new MessageSenderGateway(queue);
+            }
+            
+            public BankList(String queueName)
+            {
+              this.queue = new MessageSenderGateway(queueName);
+            }
+
+            public abstract bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount);
+        }
+
+        internal class BankXML : BankList
+        {
+            protected String bankname = "RabbbitMQ XML Bank";
+            public BankXML() : base (".\\private$\\bankxmlQueue") {}
+
+            public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
+            {
+              return loanAmount >= 1000 && creditScore >= 685 && loanDuration >= 1095 && ssn.Equals("12345678");
+            }
+        }
+
+        internal class BankJSON : BankList
+        {
+          protected String bankname = "RabbbitMQ JSON Bank";
+          public BankJSON() : base(".\\private$\\bankjsonQueue") {}
+
+          public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
+          {
+            return loanAmount >= 10.0 && creditScore >= 598 && loanDuration >= 360 && ssn.Equals("1605789787");
+          }
+        }
+
+        internal class Bank1 : BankList
+        {
+          protected String bankname = "RabbbitMQ 1 Bank";
+          public Bank1() : base(".\\private$\\bank1Queue") {}
+
+          public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
+          {
+            return loanAmount >= 20.0 && creditScore >= 698 && loanDuration >= 720 && ssn.Equals("1605605787");
+          }
+        }
+
+        internal class Bank2 : BankList
+        {
+          protected String bankname = "RabbbitMQ 2 Bank";
+          public Bank2() : base(".\\private$\\bank2Queue") {}
+
+          public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
+          {
+            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555 && ssn.Equals("1605559777");
+          }
         }
     }
 }
