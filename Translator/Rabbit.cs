@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TranslateWEB
+namespace Translator
 {
-    class Program
+    class Rabbit
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
