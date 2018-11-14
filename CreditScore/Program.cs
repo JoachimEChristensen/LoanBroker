@@ -152,7 +152,5 @@ namespace CreditScore
             Console.WriteLine("Loan duration: " + loaDuration);
             return Convert.ToInt32(loaDuration);
         }
-
-
     }
 }
