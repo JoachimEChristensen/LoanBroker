@@ -10,6 +10,9 @@ namespace Banks
     {
         static void Main(string[] args)
         {
+            //get.content();
+            //rulebase(content);
+            //send();
         }
     }
 }
