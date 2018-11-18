@@ -4,48 +4,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace RabbitMqCommunicator
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) => new Program().StartAsync().GetAwaiter();
+
+        public async Task StartAsync()
         {
+            string queue = "PBAG3_GetBanks";
+            object o = new { message = "Hello World!" };
+
+            Input(queue, o);
+
+            //await Task.Delay(5000);
+
+            await Output(queue);
         }
 
-        public bool Input(string queue, object o)
+        public static bool Input(string queue, object o)
         {
-            var factory = new ConnectionFactory() /*{ HostName = "flamingo.rmq.cloudamqp.com", Password = "h1iuDwtRBSQDPkf0hdQgj6IJo-F4K4wl", UserName = "srplaybc" }*/;
-            factory.uri = new Uri("amqp://srplaybc:h1iuDwtRBSQDPkf0hdQgj6IJo-F4K4wl@flamingo.rmq.cloudamqp.com/srplaybc");
-
-            //connfac.setHost("datdb.cphbusiness.dk");
-            //connfac.setVirtualHost("student");
-            //connfac.setUsername("student");
-            //connfac.setPassword("cph");
+            var factory = new ConnectionFactory()
+            {
+                HostName = "datdb.cphbusiness.dk",
+                //VirtualHost = "student",
+                UserName = "student",
+                Password = "cph"
+            };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "kageHello",
+                channel.QueueDeclare(queue: queue,
                     durable: false,
                     exclusive: false,
                     autoDelete: false,
                     arguments: null);
 
-                string message = "Hello World!";
-                var body = /*Encoding.UTF8.GetBytes(message)*/System.IO.File.ReadAllBytes("text.txt");
+                string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
+                var body = Encoding.UTF8.GetBytes(jsonObject);
 
                 channel.BasicPublish(exchange: "",
-                    routingKey: "kageHello",
+                    routingKey: queue,
                     basicProperties: null,
                     body: body);
-                Console.WriteLine(" [x] Sent {0}", message);
+                Console.WriteLine(" [x] Sent {0}", jsonObject);
             }
 
-            Console.WriteLine(" Press [enter] to exit.");
-            Console.ReadLine();
+            //Console.WriteLine(" Press [enter] to exit.");
+            //Console.ReadLine();
 
             return false;
+        }
+
+        public async Task Output(string queue)
+        {
+            object jsonObject = null;
+
+            var factory = new ConnectionFactory()
+            {
+                HostName = "datdb.cphbusiness.dk",
+                //VirtualHost = "student",
+                UserName = "student",
+                Password = "cph"
+            };
+
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: queue,
+                    durable: false,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: null);
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =>
+                {
+                    var body = ea.Body;
+                    var message = Encoding.UTF8.GetString(body);
+
+                    jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+
+                    Console.WriteLine(" [x] Received {0}", message);
+                    channel.BasicAck(ea.DeliveryTag, false);
+                };
+                channel.BasicConsume(queue: queue, consumer: consumer);
+                //Console.WriteLine(" Press [enter] to exit.");
+                //Console.ReadLine();
+                await Task.Delay(-1);
+            }
         }
     }
 }
