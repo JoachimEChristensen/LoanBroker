@@ -9,16 +9,19 @@ namespace RestBank.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
+        double interestRate = 2;
+
+        // GET api/values/
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET api/values/:loanamount/:loanduration
+        public string Get(double loanamount, int loanduration)
         {
-            return "value";
+            interestRate = interestRate * (loanduration * 0.3) * (loanamount / 2); 
+            return interestRate.ToString();
         }
 
         // POST api/values
@@ -28,11 +31,6 @@ namespace RestBank.Controllers
 
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
         {
         }
     }
