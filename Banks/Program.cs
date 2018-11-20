@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Banks.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,11 @@ namespace Banks
         static void Main(string[] args)
         {
             //get.content();
-            //rulebase(content);
+
+            List<Bank> banks = new List<Bank>();
+
+            banks.add(rulebase(creditScore, loanAmount));
+
             //send();
         }
     }
