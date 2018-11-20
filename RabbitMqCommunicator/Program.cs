@@ -10,18 +10,20 @@ namespace RabbitMqCommunicator
 {
     class Program
     {
-        static void Main(string[] args) => new Program().StartAsync().GetAwaiter();
+        static void Main(string[] args) => new Program().StartAsync().GetAwaiter()/*.GetResult()*/;
 
         public async Task StartAsync()
         {
             string queue = "PBAG3_GetBanks";
-            object o = new { message = "Hello World!" };
+            object o = new {message = "Hello World!"};
 
-            Input(queue, o);
+            bool success = Input(queue, o);
 
             //await Task.Delay(5000);
 
-            await Output(queue);
+            object oJson = await Output(queue);
+
+            string stopLine = Console.ReadLine();
         }
 
         public static bool Input(string queue, object o)
@@ -34,32 +36,38 @@ namespace RabbitMqCommunicator
                 Password = "cph"
             };
 
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            try
             {
-                channel.QueueDeclare(queue: queue,
-                    durable: false,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: queue,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null);
 
-                string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                var body = Encoding.UTF8.GetBytes(jsonObject);
+                    string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
+                    var body = Encoding.UTF8.GetBytes(jsonObject);
 
-                channel.BasicPublish(exchange: "",
-                    routingKey: queue,
-                    basicProperties: null,
-                    body: body);
-                Console.WriteLine(" [x] Sent {0}", jsonObject);
+                    channel.BasicPublish(exchange: "",
+                        routingKey: queue,
+                        basicProperties: null,
+                        body: body);
+                    Console.WriteLine(" [x] Sent {0}", jsonObject);
+                }
+
+                return true;
             }
-
-            //Console.WriteLine(" Press [enter] to exit.");
-            //Console.ReadLine();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
             return false;
         }
 
-        public async Task Output(string queue)
+        public async Task<object> Output(string queue)
         {
             object jsonObject = null;
 
@@ -71,31 +79,45 @@ namespace RabbitMqCommunicator
                 Password = "cph"
             };
 
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            try
             {
-                channel.QueueDeclare(queue: queue,
-                    durable: false,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
-
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
                 {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
+                    channel.QueueDeclare(queue: queue,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null);
 
-                    jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+                    var consumer = new EventingBasicConsumer(channel);
+                    bool messageReceived = false;
+                    consumer.Received += (model, ea) =>
+                    {
+                        var body = ea.Body;
+                        var message = Encoding.UTF8.GetString(body);
 
-                    Console.WriteLine(" [x] Received {0}", message);
-                    channel.BasicAck(ea.DeliveryTag, false);
-                };
-                channel.BasicConsume(queue: queue, consumer: consumer);
-                //Console.WriteLine(" Press [enter] to exit.");
-                //Console.ReadLine();
-                await Task.Delay(-1);
+                        jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+
+                        Console.WriteLine(" [x] Received {0}", message);
+                        channel.BasicAck(ea.DeliveryTag, false);
+
+                        messageReceived = true;
+                    };
+                    channel.BasicConsume(queue: queue, consumer: consumer);
+
+                    while (!messageReceived)
+                    {
+                        await Task.Delay(1000);
+                    }
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return jsonObject;
         }
     }
 }
