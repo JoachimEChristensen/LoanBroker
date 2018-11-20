@@ -15,7 +15,6 @@ namespace RabbitMqBank
         private static string RPC_QUEUE_NAME = "cphbusiness.bankRabbit";
         private static string queueName = "bank.rabbit.translator";
         private static string exchangeName = "translator.exch";
-        private static string bankUri = "amqp://srplaybc:h1iuDwtRBSQDPkf0hdQgj6IJo-F4K4wl@flamingo.rmq.cloudamqp.com/srplaybc";
         private string bankExchange = "cphbusiness.bankRabbit";
 
         public async Task StartAsync()
@@ -36,7 +35,10 @@ namespace RabbitMqBank
 
             var factory = new ConnectionFactory()
             {
-                Uri = new Uri(bankUri)
+                HostName = "datdb.cphbusiness.dk",
+                //VirtualHost = "student",
+                UserName = "student",
+                Password = "cph"
             };
 
             try
@@ -83,7 +85,10 @@ namespace RabbitMqBank
         {
             var factory = new ConnectionFactory()
             {
-                Uri = new Uri(bankUri)
+                HostName = "datdb.cphbusiness.dk",
+                //VirtualHost = "student",
+                UserName = "student",
+                Password = "cph"
             };
 
             try
