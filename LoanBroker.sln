@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleBase", "RuleBase\RuleBa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqBank", "RabbitMqBank\RabbitMqBank.csproj", "{28D8B809-4A3D-46C5-81EE-94923BF2287E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator", "Translator\Translator.csproj", "{43165C20-AB84-4134-9DD5-37942470362B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{28D8B809-4A3D-46C5-81EE-94923BF2287E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28D8B809-4A3D-46C5-81EE-94923BF2287E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28D8B809-4A3D-46C5-81EE-94923BF2287E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43165C20-AB84-4134-9DD5-37942470362B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43165C20-AB84-4134-9DD5-37942470362B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43165C20-AB84-4134-9DD5-37942470362B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43165C20-AB84-4134-9DD5-37942470362B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
