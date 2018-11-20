@@ -32,7 +32,7 @@ namespace RecipientList
 
         internal static class MessageRouter
         {
-            public static void SendToRecipentList (Message msg, IMessageSender[] recipientList)
+            public static void SendToRecipentList(Message msg, IMessageSender[] recipientList)
             {
                 IEnumerator enumerator = recipientList.GetEnumerator();
                 while (enumerator.MoveNext())

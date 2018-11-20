@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F65F9E1A-3599-4646-8C8D-87C50A896224}</ProjectGuid>
+    <ProjectGuid>{28D8B809-4A3D-46C5-81EE-94923BF2287E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RecipientList</RootNamespace>
-    <AssemblyName>RecipientList</AssemblyName>
+    <RootNamespace>RabbitMqBank</RootNamespace>
+    <AssemblyName>RabbitMqBank</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,7 +44,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,11 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonFormatter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecipientList.cs" />
-    <Compile Include="MessageSenderGateway.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

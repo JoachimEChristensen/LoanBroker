@@ -1,21 +1,20 @@
-﻿using System;
+﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using RecipientList;
 
-namespace Loan_Broker_elements
+namespace RabbitMqBank
 {
     class Program
-    {      
+    {
         static void Main(string[] args) => new Program().StartAsync().GetAwaiter();
 
         public async Task StartAsync()
         {
-            string queue = "PBAG3_Translator";
+            string queue = "RabbitMQ Bank";
             object o = new { message = "Hello World!" };
 
             Input(queue, o);
@@ -44,14 +43,14 @@ namespace Loan_Broker_elements
                     autoDelete: false,
                     arguments: null);
 
-                string Object = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                var body = Encoding.UTF8.GetBytes(Object);
+                string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
+                var body = Encoding.UTF8.GetBytes(jsonObject);
 
                 channel.BasicPublish(exchange: "",
                     routingKey: queue,
                     basicProperties: null,
                     body: body);
-                Console.WriteLine(" [x] Sent {0}", Object);
+                Console.WriteLine(" [x] Sent {0}", jsonObject);
             }
 
             //Console.WriteLine(" Press [enter] to exit.");
@@ -98,6 +97,5 @@ namespace Loan_Broker_elements
                 await Task.Delay(-1);
             }
         }
-    
     }
 }
