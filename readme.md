@@ -1,3 +1,8 @@
+# Group members:
+Joachim Ellingsgaard Christensen
+Xinkai Huang
+Christian Philip Ege Nielsen
+
 This readme file serves as a web-based piece of documentation for every single part of the LoanBroker architecture. It's not the most complex sort of description for each piece of the system, but this will have to do.
 
 # Get Credit Score
