@@ -12,90 +12,108 @@ namespace RabbitMqBank
     {
         static void Main(string[] args) => new Program().StartAsync().GetAwaiter();
 
+        private static string RPC_QUEUE_NAME = "cphbusiness.bankRabbit";
+        private static string queueName = "bank.rabbit.translator";
+        private static string exchangeName = "translator.exch";
+        private static string bankUri = "amqp://srplaybc:h1iuDwtRBSQDPkf0hdQgj6IJo-F4K4wl@flamingo.rmq.cloudamqp.com/srplaybc";
+        private string bankExchange = "cphbusiness.bankRabbit";
+
         public async Task StartAsync()
         {
-            string queue = "RabbitMQ Bank";
+            string queue = queueName;
             object o = new { message = "Hello World!" };
 
-            Input(queue, o);
+            object oJson = await Input(queue);
 
-            //await Task.Delay(5000);
+            bool success = Output(queue, o);
 
-            await Output(queue);
+            string line = Console.ReadLine();
         }
 
-        public static bool Input(string queue, object o)
-        {
-            var factory = new ConnectionFactory()
-            {
-                HostName = "datdb.cphbusiness.dk",
-                //VirtualHost = "student",
-                UserName = "student",
-                Password = "cph"
-            };
-
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
-            {
-                channel.QueueDeclare(queue: queue,
-                    durable: false,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
-
-                string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                var body = Encoding.UTF8.GetBytes(jsonObject);
-
-                channel.BasicPublish(exchange: "",
-                    routingKey: queue,
-                    basicProperties: null,
-                    body: body);
-                Console.WriteLine(" [x] Sent {0}", jsonObject);
-            }
-
-            //Console.WriteLine(" Press [enter] to exit.");
-            //Console.ReadLine();
-
-            return false;
-        }
-
-        public async Task Output(string queue)
+        public async Task<object> Input(string queue)
         {
             object jsonObject = null;
 
             var factory = new ConnectionFactory()
             {
-                HostName = "datdb.cphbusiness.dk",
-                //VirtualHost = "student",
-                UserName = "student",
-                Password = "cph"
+                Uri = new Uri(bankUri)
             };
 
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            try
             {
-                channel.QueueDeclare(queue: queue,
-                    durable: false,
-                    exclusive: false,
-                    autoDelete: false,
-                    arguments: null);
-
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
                 {
-                    var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
+                    channel.QueueDeclare(queue: RPC_QUEUE_NAME,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null);
 
-                    jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+                    var consumer = new EventingBasicConsumer(channel);
+                    consumer.Received += (model, ea) =>
+                    {
+                        double intrest_rate = 2 + new Random().Next(10) + new Random().NextDouble();
+                        var response = "";
+                        response = "{\"interestRate\":" + intrest_rate + "}";
+                        var body = ea.Body;
+                        body = Encoding.UTF8.GetBytes(response);
+                        var message = Encoding.UTF8.GetString(body);
 
-                    Console.WriteLine(" [x] Received {0}", message);
-                    channel.BasicAck(ea.DeliveryTag, false);
-                };
-                channel.BasicConsume(queue: queue, consumer: consumer);
-                //Console.WriteLine(" Press [enter] to exit.");
-                //Console.ReadLine();
-                await Task.Delay(-1);
+                        jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+
+                        Console.WriteLine(" [x] Received {0}", message);
+
+                        channel.BasicAck(ea.DeliveryTag, false);
+                    };
+                    channel.BasicConsume(queue: RPC_QUEUE_NAME, autoAck: false, consumer: consumer);
+                }
+
+                await Task.Delay(1000);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return jsonObject;
+        }
+       
+        public static bool Output(string queue, object o)
+        {
+            var factory = new ConnectionFactory()
+            {
+                Uri = new Uri(bankUri)
+            };
+
+            try
+            {
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: queue,
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null);
+
+                    string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
+                    var body = Encoding.UTF8.GetBytes(jsonObject);
+
+                    channel.BasicPublish(exchange: "",
+                        routingKey: queue,
+                        basicProperties: null,
+                        body: body);
+                    Console.WriteLine(" [x] Sent {0}", jsonObject);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return false;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace RuleBase.Model
 
         public Bank()
         {
-           
+
         }
 
         public Bank(String name, String Id)

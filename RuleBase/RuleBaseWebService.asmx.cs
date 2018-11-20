@@ -21,7 +21,7 @@ namespace RuleBase
     {
 
         [WebMethod]
-        public List<Bank> bank([XmlElement("creditScore")] int creditScore, [XmlElement("loanAmount")] double loanAmount)
+        public List<Bank> makeLoan([XmlElement("creditScore")] int creditScore, [XmlElement("loanAmount")] double loanAmount)
         {
             List<Bank> banks = new List<Bank>();
             banks = getRule(creditScore, loanAmount);
@@ -36,7 +36,7 @@ namespace RuleBase
                 if ((loanAmount >= (double)18) && (loanAmount <= (double)999) && (creditScore >= 500))
                 {
                     banks.Add(new Bank("RabbbitMQ 1 Bank", "bank1"));
-                    banks.Add(new Bank("RabbbitMQ JSON Bank", "bankjson"));
+                    banks.Add(new Bank("RabbbitMQ JSON Bank", "bankjson"));                   
                 }
 
                 if ((loanAmount >= (double)999) && (creditScore >= 600))
