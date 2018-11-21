@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using RabbitMq;
 
 namespace CreditScore
 {
@@ -24,7 +25,7 @@ namespace CreditScore
             }
         }
 
-        private static void CreditScoreCompleted(object sender, creditScoreCompletedEventArgs e)
+        private static async void CreditScoreCompleted(object sender, creditScoreCompletedEventArgs e)
         {
             int creditScore = e.Result;
             string ssn = e.UserState?.GetType().GetProperty("ssn")?.GetValue(e.UserState, null).ToString();
@@ -32,6 +33,7 @@ namespace CreditScore
             int loanDuration = Convert.ToInt32(e.UserState?.GetType().GetProperty("loanDuration")?.GetValue(e.UserState, null));
 
             Console.WriteLine("SSN: " + ssn + ", Credit score: " + creditScore + ", Loan amount: " + loanAmount + ", Loan duration: " + loanDuration);
+            var test = await RabbitMq.RabbitMq.Output("PBAG3_GetBanks");
         }
 
         private static string Ssn()

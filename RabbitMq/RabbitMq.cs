@@ -6,32 +6,22 @@ using System.Threading.Tasks;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
-namespace RabbitMqCommunicator
+namespace RabbitMq
 {
-    class Program
+    public class RabbitMq
     {
-        static void Main(string[] args) => new Program().StartAsync().GetAwaiter()/*.GetResult()*/;
-
-        public async Task StartAsync()
-        {
-            string queue = "PBAG3_GetBanks";
-            object o = new {message = "Hello World!"};
-
-            bool success = Input(queue, o);
-
-            //await Task.Delay(5000);
-
-            object oJson = await Output(queue);
-
-            string stopLine = Console.ReadLine();
-        }
-
-        public static bool Input(string queue, object o)
+        /// <summary>
+        /// RabbitMQ sender
+        /// </summary>
+        /// <param name="queue">The queue to send the object on</param>
+        /// <param name="jsonString">The JSON string to send</param>
+        /// <param name="replyToQueue">The queue the receiver should respond on (optional)</param>
+        /// <returns>Boolean</returns>
+        public static bool Input(string queue, string jsonString, string replyToQueue = "")
         {
             var factory = new ConnectionFactory()
             {
                 HostName = "datdb.cphbusiness.dk",
-                //VirtualHost = "student",
                 UserName = "student",
                 Password = "cph"
             };
@@ -47,34 +37,41 @@ namespace RabbitMqCommunicator
                         autoDelete: false,
                         arguments: null);
 
-                    string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                    var body = Encoding.UTF8.GetBytes(jsonObject);
+
+                    var body = Encoding.UTF8.GetBytes(jsonString);
+
+                    IBasicProperties props = channel.CreateBasicProperties();
+                    props.ReplyTo = replyToQueue;
 
                     channel.BasicPublish(exchange: "",
                         routingKey: queue,
-                        basicProperties: null,
+                        basicProperties: props,
                         body: body);
-                    Console.WriteLine(" [x] Sent {0}", jsonObject);
+                    Console.WriteLine(" [x] Sent {0}", jsonString);
                 }
 
                 return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
 
             return false;
         }
 
-        public async Task<object> Output(string queue)
+        /// <summary>
+        /// RabbitMQ receiver
+        /// </summary>
+        /// <param name="queue">The queue to receiver the JSON string on</param>
+        /// <returns>JSON string</returns>
+        public static async Task<string> Output(string queue)
         {
-            object jsonObject = null;
+            string message = "";
 
             var factory = new ConnectionFactory()
             {
                 HostName = "datdb.cphbusiness.dk",
-                //VirtualHost = "student",
                 UserName = "student",
                 Password = "cph"
             };
@@ -95,9 +92,7 @@ namespace RabbitMqCommunicator
                     consumer.Received += (model, ea) =>
                     {
                         var body = ea.Body;
-                        var message = Encoding.UTF8.GetString(body);
-
-                        jsonObject = Newtonsoft.Json.JsonConvert.DeserializeObject(message);
+                        message = Encoding.UTF8.GetString(body);
 
                         Console.WriteLine(" [x] Received {0}", message);
                         channel.BasicAck(ea.DeliveryTag, false);
@@ -114,10 +109,10 @@ namespace RabbitMqCommunicator
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e/*.Message*/);
             }
 
-            return jsonObject;
+            return message;
         }
     }
 }

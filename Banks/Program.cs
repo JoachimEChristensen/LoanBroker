@@ -15,7 +15,7 @@ namespace Banks
 
             List<Bank> banks = new List<Bank>();
 
-            banks.add(rulebase(creditScore, loanAmount));
+            //banks.add(rulebase(creditScore, loanAmount));
 
             //send();
         }
