@@ -25,15 +25,19 @@ namespace CreditScore
             }
         }
 
-        private static async void CreditScoreCompleted(object sender, creditScoreCompletedEventArgs e)
+        private static void CreditScoreCompleted(object sender, creditScoreCompletedEventArgs e)
         {
-            int creditScore = e.Result;
-            string ssn = e.UserState?.GetType().GetProperty("ssn")?.GetValue(e.UserState, null).ToString();
-            double loanAmount = Convert.ToDouble(e.UserState?.GetType().GetProperty("loanAmount")?.GetValue(e.UserState, null));
-            int loanDuration = Convert.ToInt32(e.UserState?.GetType().GetProperty("loanDuration")?.GetValue(e.UserState, null));
+            CreditScoreReport creditScoreReport = new CreditScoreReport();
+            creditScoreReport.CreditScore = e.Result;
+            creditScoreReport.Ssn = e.UserState?.GetType().GetProperty("ssn")?.GetValue(e.UserState, null).ToString();
+            creditScoreReport.LoanAmount = Convert.ToDouble(e.UserState?.GetType().GetProperty("loanAmount")?.GetValue(e.UserState, null));
+            creditScoreReport.LoanDuration = Convert.ToInt32(e.UserState?.GetType().GetProperty("loanDuration")?.GetValue(e.UserState, null));
 
-            Console.WriteLine("SSN: " + ssn + ", Credit score: " + creditScore + ", Loan amount: " + loanAmount + ", Loan duration: " + loanDuration);
-            var test = await RabbitMq.RabbitMq.Output("PBAG3_GetBanks");
+            string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(creditScoreReport);
+
+            //Console.WriteLine(jsonObject);// test
+
+            bool success = RabbitMq.RabbitMq.Input("PBAG3_GetBanks", jsonObject);
         }
 
         private static string Ssn()
