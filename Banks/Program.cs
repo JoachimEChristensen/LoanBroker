@@ -11,22 +11,25 @@ namespace Banks
     {
         static void Main(string[] args)
         {
-            string input = RabbitMq.RabbitMq.Output("PBAG3_GetBanks").Result;
-
-            RuleBaseWebService RBWS = new RuleBaseWebService();
-            CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);
-            int creditScore = O.CreditScore;
-            float loanAmount = O.LoanAmount;
-
-            foreach (var bank in RBWS.makeLoan(creditScore, loanAmount))
+            while (true)
             {
-                O.Banks.Add(bank);
-            }
+                string input = RabbitMq.RabbitMq.Output("PBAG3_GetBanks").Result;
+
+                RuleBaseWebService RBWS = new RuleBaseWebService();
+                CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);
+                int creditScore = O.CreditScore;
+                float loanAmount = O.LoanAmount;
+
+                foreach (var bank in RBWS.makeLoan(creditScore, loanAmount))
+                {
+                    O.Banks.Add(bank);
+                }
             
-            string jsonObject = JsonConvert.SerializeObject(O);
+                string jsonObject = JsonConvert.SerializeObject(O);
             
 
-            bool success = RabbitMq.RabbitMq.Input("PBAG3_Recipient", jsonObject);
+                bool success = RabbitMq.RabbitMq.Input("PBAG3_Recipient", jsonObject);
+            }
         }
     }
 }

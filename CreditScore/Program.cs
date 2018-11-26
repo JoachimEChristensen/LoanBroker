@@ -35,8 +35,6 @@ namespace CreditScore
 
             string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(creditScoreReport);
 
-            //Console.WriteLine(jsonObject);// test
-
             bool success = RabbitMq.RabbitMq.Input("PBAG3_GetBanks", jsonObject);
         }
 
