@@ -9,10 +9,10 @@ using MessageGateway;
 
 namespace RecipientList
 {
-    class RecipientList
+    class Recipient
     {
         protected BankList[] banks = { new BankXML(), new BankJSON(), new Bank1(), new Bank2() };
-
+     
         public IMessageSender[] GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
         {
             ArrayList creditors = new ArrayList();
@@ -29,7 +29,9 @@ namespace RecipientList
             creditors.CopyTo(creditorArray);
             return creditorArray;
         }
+       
 
+        /*
         internal static class MessageRouter
         {
             public static void SendToRecipentList(Message msg, IMessageSender[] recipientList)
@@ -38,21 +40,22 @@ namespace RecipientList
                 while (enumerator.MoveNext())
                 {
                     ((IMessageSender)enumerator.Current).Send(msg);
+                    
                 }
             }
-        }
+        }*/
         
         internal abstract class BankList
         {
             protected MessageSenderGateway queue;
-            protected String bankName = "";
+            protected string bankName = "";
             
             public MessageSenderGateway Queue
             {
                 get { return queue; }
             }
 
-            public String BankName
+            public string BankName
             {
                 get { return bankName; }
             }
@@ -62,7 +65,7 @@ namespace RecipientList
               this.queue = new MessageSenderGateway(queue);
             }
             
-            public BankList(String queueName)
+            public BankList(string queueName)
             {
               this.queue = new MessageSenderGateway(queueName);
             }
@@ -72,7 +75,7 @@ namespace RecipientList
 
         internal class BankXML : BankList
         {
-            protected String bankname = "RabbbitMQ XML Bank";
+            protected string bankname = "RabbbitMQ XML Bank";
             public BankXML() : base (".\\private$\\bankxmlQueue") {}
 
             public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
@@ -83,7 +86,7 @@ namespace RecipientList
 
         internal class BankJSON : BankList
         {
-          protected String bankname = "RabbbitMQ JSON Bank";
+          protected string bankname = "RabbbitMQ JSON Bank";
           public BankJSON() : base(".\\private$\\bankjsonQueue") {}
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
@@ -94,7 +97,7 @@ namespace RecipientList
 
         internal class Bank1 : BankList
         {
-          protected String bankname = "RabbbitMQ 1 Bank";
+          protected string bankname = "RabbbitMQ 1 Bank";
           public Bank1() : base(".\\private$\\bank1Queue") {}
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
@@ -105,7 +108,7 @@ namespace RecipientList
 
         internal class Bank2 : BankList
         {
-          protected String bankname = "RabbbitMQ 2 Bank";
+          protected string bankname = "RabbbitMQ 2 Bank";
           public Bank2() : base(".\\private$\\bank2Queue") {}
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
