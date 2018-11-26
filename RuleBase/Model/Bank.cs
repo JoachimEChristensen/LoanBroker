@@ -7,19 +7,19 @@ namespace RuleBase.Model
 {
     public class Bank
     {
-        private String name { get; set; }
+        public string name { get; set; }
 
-        private String bankId { get; set; }
+        public string bankId { get; set; }
 
         public Bank()
         {
 
         }
 
-        public Bank(String name, String Id)
+        public Bank(string name, string Id)
         {
             this.name = name;
-            this.bankId = bankId;
+            this.bankId = Id;
         }
     }
 }
