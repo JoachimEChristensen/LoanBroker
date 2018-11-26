@@ -1,4 +1,5 @@
 ﻿using Banks.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,22 @@ namespace Banks
     {
         static void Main(string[] args)
         {
+            string input = RabbitMq.RabbitMq.Output("PBAG3_GetBanks").Result;
 
             RuleBaseWebService RBWS = new RuleBaseWebService();
-            //get.content();
-            int creditScore = 0;
-            int loanAmount = 0;
-            List<Bank> banks = new List<Bank>();
+            CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);
+            int creditScore = O.CreditScore;
+            float loanAmount = O.LoanAmount;
 
             foreach (var bank in RBWS.makeLoan(creditScore, loanAmount))
             {
-                banks.Add(bank);
+                O.Banks.Add(bank);
             }
             
-            //send();
+            string jsonObject = JsonConvert.SerializeObject(O);
+            
+
+            bool success = RabbitMq.RabbitMq.Input("PBAG3_Recepient", jsonObject);
         }
     }
 }
