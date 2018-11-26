@@ -13,7 +13,7 @@ namespace RecipientList
     {
         protected BankList[] banks = { new BankXML(), new BankJSON(), new Bank1(), new Bank2() };
      
-        public IMessageSender[] GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
+        public ArrayList GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
         {
             ArrayList creditors = new ArrayList();
 
@@ -24,10 +24,8 @@ namespace RecipientList
                     creditors.Add(banks[number].Queue);
                 }
             }
-
-            IMessageSender[] creditorArray = (IMessageSender[])Array.CreateInstance(typeof(IMessageSender), creditors.Count);
-            creditors.CopyTo(creditorArray);
-            return creditorArray;
+            
+            return creditors;
         }
        
         internal abstract class BankList
@@ -65,7 +63,7 @@ namespace RecipientList
 
             public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
             {
-              return loanAmount >= 1000 && creditScore >= 685 && loanDuration >= 1095;
+              return loanAmount >= 999 && creditScore >= 600 && loanDuration >= 1095;
             }
         }
 
@@ -76,7 +74,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 10.0 && creditScore >= 598 && loanDuration >= 360;
+            return loanAmount >= 10.0 && creditScore >= 500 && loanDuration >= 360;
           }
         }
 
@@ -87,7 +85,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 20.0 && creditScore >= 698 && loanDuration >= 720;
+            return loanAmount >= 18.0 && creditScore >= 500 && loanDuration >= 720;
           }
         }
 
@@ -98,7 +96,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555;
+            return loanAmount >= 15.5 && creditScore > -1 && loanDuration >= 555;
           }
         }
     }
