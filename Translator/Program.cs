@@ -10,6 +10,7 @@ namespace Translator
     {
         static void Main(string[] args)
         {
+            //string input = RabbitMq.RabbitMq.Output("PBAG3_Translator").Result;
         }
     }
 }

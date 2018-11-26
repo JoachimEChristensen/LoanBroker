@@ -27,7 +27,7 @@ namespace Banks
             string jsonObject = JsonConvert.SerializeObject(O);
             
 
-            bool success = RabbitMq.RabbitMq.Input("PBAG3_Recepient", jsonObject);
+            bool success = RabbitMq.RabbitMq.Input("PBAG3_Recipient", jsonObject);
         }
     }
 }

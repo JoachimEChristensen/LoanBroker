@@ -11,7 +11,7 @@ namespace Loan_Broker_elements
     {      
         static void Main(string[] args)
         {
-            
+            //string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
 
         }   
     }

@@ -10,6 +10,7 @@ namespace Aggregator
     {
         static void Main(string[] args)
         {
+            //string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator").Result;
             //int best = 1000;
             //resource.get(1);
             //resource.get(2);
