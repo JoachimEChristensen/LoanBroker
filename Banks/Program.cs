@@ -11,12 +11,18 @@ namespace Banks
     {
         static void Main(string[] args)
         {
-            //get.content();
 
+            RuleBaseWebService RBWS = new RuleBaseWebService();
+            //get.content();
+            int creditScore = 0;
+            int loanAmount = 0;
             List<Bank> banks = new List<Bank>();
 
-            //banks.add(rulebase(creditScore, loanAmount));
-
+            foreach (var bank in RBWS.makeLoan(creditScore, loanAmount))
+            {
+                banks.Add(bank);
+            }
+            
             //send();
         }
     }
