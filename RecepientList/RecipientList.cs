@@ -65,7 +65,7 @@ namespace RecipientList
 
             public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
             {
-              return loanAmount >= 1000 && creditScore >= 685 && loanDuration >= 1095 && ssn.Equals("12345678");
+              return loanAmount >= 1000 && creditScore >= 685 && loanDuration >= 1095;
             }
         }
 
@@ -76,7 +76,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 10.0 && creditScore >= 598 && loanDuration >= 360 && ssn.Equals("1605789787");
+            return loanAmount >= 10.0 && creditScore >= 598 && loanDuration >= 360;
           }
         }
 
@@ -87,7 +87,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 20.0 && creditScore >= 698 && loanDuration >= 720 && ssn.Equals("1605605787");
+            return loanAmount >= 20.0 && creditScore >= 698 && loanDuration >= 720;
           }
         }
 
@@ -98,7 +98,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555 && ssn.Equals("1605559777");
+            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555);
           }
         }
     }
