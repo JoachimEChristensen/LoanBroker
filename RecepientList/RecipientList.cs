@@ -30,21 +30,6 @@ namespace RecipientList
             return creditorArray;
         }
        
-
-        /*
-        internal static class MessageRouter
-        {
-            public static void SendToRecipentList(Message msg, IMessageSender[] recipientList)
-            {
-                IEnumerator enumerator = recipientList.GetEnumerator();
-                while (enumerator.MoveNext())
-                {
-                    ((IMessageSender)enumerator.Current).Send(msg);
-                    
-                }
-            }
-        }*/
-        
         internal abstract class BankList
         {
             protected MessageSenderGateway queue;
