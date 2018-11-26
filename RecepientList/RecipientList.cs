@@ -98,7 +98,7 @@ namespace RecipientList
 
           public override bool EligibleLoanRequest(string ssn, int creditScore, int loanDuration, double loanAmount)
           {
-            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555);
+            return loanAmount >= 15.5 && creditScore >= 666 && loanDuration >= 555;
           }
         }
     }
