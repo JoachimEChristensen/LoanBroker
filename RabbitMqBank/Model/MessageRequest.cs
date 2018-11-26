@@ -22,8 +22,3 @@ namespace RabbitMqBank.Model
         }
     }
 }
-
-
-16001
-60571,56
-70732,55
