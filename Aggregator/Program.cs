@@ -10,16 +10,23 @@ namespace Aggregator
     {
         static void Main(string[] args)
         {
+            int best = 0;
+            string bank = "";
             //string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator").Result;
-            //int best = 1000;
-            //resource.get(1);
+            //CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);
+            List<CreditScoreReport> CSR = new List<CreditScoreReport>();
             //resource.get(2);
             //resource.get(3);
 
-            //for (x in y) {
-            //if x < best best = x;
-            // }
-            // out.("The best quote you can get for your desired loan is " + best + " from " + x.bank());
+            foreach (var CreditScoreReport in CSR)
+            {
+                if (CreditScoreReport.CreditScore < best)
+                {
+                    bank = CreditScoreReport.Ssn;
+                    best = CreditScoreReport.CreditScore;
+                }
+            }
+            Console.WriteLine("The best quote you can get for your desired loan is " + best + " from " + bank);
         }
     }
 }
