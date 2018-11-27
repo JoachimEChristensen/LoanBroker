@@ -8,5 +8,9 @@ namespace Translator
 {
     class Rabbit
     {
+        public void SendRequest()
+        {
+
+        }
     }
 }

@@ -8,5 +8,9 @@ namespace Translator
 {
     class Web
     {
+        public void SendRequest()
+        {
+
+        }
     }
 }

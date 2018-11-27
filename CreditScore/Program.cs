@@ -120,11 +120,11 @@ namespace CreditScore
 
         private static int LoanDuration()
         {
-            string loaDuration = "";
+            string loanDuration = "";
 
             Console.WriteLine("Input loan amount:");
 
-            Match match = Regex.Match(loaDuration, @"^\d+$");
+            Match match = Regex.Match(loanDuration, @"^\d+$");
             bool enter = false;
             bool firstTry = true;
 
@@ -134,27 +134,27 @@ namespace CreditScore
                 {
                     Console.WriteLine("Try again: (XX.XX)");
                 }
-                loaDuration = Console.ReadLine();
-                match = Regex.Match(loaDuration, @"^\d+$");
+                loanDuration = Console.ReadLine();
+                match = Regex.Match(loanDuration, @"^\d+$");
 
                 if (firstTry)
                 {
                     firstTry = false;
                 }
-                if (loaDuration == "")
+                if (loanDuration == "")
                 {
                     enter = true;
                 }
             }
 
-            if (loaDuration == "")
+            if (loanDuration == "")
             {
                 Random random = new Random();
-                loaDuration = random.Next(1, 500).ToString();
+                loanDuration = random.Next(240, 1500).ToString();
             }
 
-            Console.WriteLine("Loan duration: " + loaDuration);
-            return Convert.ToInt32(loaDuration);
+            Console.WriteLine("Loan duration: " + loanDuration);
+            return Convert.ToInt32(loanDuration);
         }
     }
 }
