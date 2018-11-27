@@ -31,10 +31,12 @@ namespace Loan_Broker_elements
                 for (int number = 0; number < bank.Banks.Count; number++)
                 {                   
                     item.Add((recipient.GetBankQueues(ssn, creditScore, loanDuration, loanAmount)).ToString());
-                }              
+                }
 
-                Message msg = new Message();
-                msg.Body = item;
+                Message msg = new Message
+                {
+                    Body = item
+                };
 
                 JsonFormatter jsonFormatter = new JsonFormatter();
                 jsonFormatter.Write(msg, bank);

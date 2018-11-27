@@ -13,7 +13,7 @@ namespace RecipientList
     {
         protected BankList[] banks = { new BankXML(), new BankJSON(), new Bank1(), new Bank2() };
      
-        public IMessageSender[] GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
+        public ArrayList GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
         {
             ArrayList creditors = new ArrayList();
 
@@ -25,9 +25,7 @@ namespace RecipientList
                 }
             }
 
-            IMessageSender[] creditorArray = (IMessageSender[])Array.CreateInstance(typeof(IMessageSender), creditors.Count);
-            creditors.CopyTo(creditorArray);
-            return creditorArray;
+            return creditors;
         }
        
         internal abstract class BankList

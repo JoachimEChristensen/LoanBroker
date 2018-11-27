@@ -10,13 +10,20 @@ namespace RabbitMqBank
 {
     class Program
     {
-        static void Main(string[] args) => new Program().StartAsync().GetAwaiter();
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                
+            }
+        }
 
         private static string RPC_QUEUE_NAME = "cphbusiness.bankRabbit";
         private static string queueName = "bank.rabbit.translator";
         private static string exchangeName = "translator.exch";
         private string bankExchange = "cphbusiness.bankRabbit";
 
+        /*
         public async Task StartAsync()
         {
             string queue = queueName;
@@ -79,6 +86,6 @@ namespace RabbitMqBank
             }
 
             return jsonObject;
-        }       
+        }       */
     }
 }

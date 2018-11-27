@@ -15,9 +15,4 @@ namespace MessageGateway
 
         }
     }
-
-    public interface IMessageSender
-    {
-        void Send(Message message);
-    }
 }
