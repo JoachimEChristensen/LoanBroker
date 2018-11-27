@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Messaging;
 using System.Text;
@@ -26,10 +27,14 @@ namespace Loan_Broker_elements
                 int loanDuration = bank.loanDuration;
 
                 Recipient recipient = new Recipient();
-                var items = recipient.GetBankQueues(ssn, creditScore, loanDuration, loanAmount);
+                List<string> item = new List<string>();
+                for (int number = 0; number < bank.Banks.Count; number++)
+                {                   
+                    item.Add((recipient.GetBankQueues(ssn, creditScore, loanDuration, loanAmount)).ToString());
+                }              
 
                 Message msg = new Message();
-                msg.Body = items;
+                msg.Body = item;
 
                 JsonFormatter jsonFormatter = new JsonFormatter();
                 jsonFormatter.Write(msg, bank);

@@ -13,7 +13,7 @@ namespace RecipientList
     {
         protected BankList[] banks = { new BankXML(), new BankJSON(), new Bank1(), new Bank2() };
      
-        public ArrayList GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
+        public IMessageSender[] GetBankQueues(string ssn, int creditScore, int loanDuration, double loanAmount)
         {
             ArrayList creditors = new ArrayList();
 
@@ -24,21 +24,23 @@ namespace RecipientList
                     creditors.Add(banks[number].Queue);
                 }
             }
-            
-            return creditors;
+
+            IMessageSender[] creditorArray = (IMessageSender[])Array.CreateInstance(typeof(IMessageSender), creditors.Count);
+            creditors.CopyTo(creditorArray);
+            return creditorArray;
         }
        
         internal abstract class BankList
         {
             protected MessageSenderGateway queue;
-            protected string bankName = "";
+            protected String bankName = "";
             
             public MessageSenderGateway Queue
             {
                 get { return queue; }
             }
 
-            public string BankName
+            public String BankName
             {
                 get { return bankName; }
             }
@@ -48,7 +50,7 @@ namespace RecipientList
               this.queue = new MessageSenderGateway(queue);
             }
             
-            public BankList(string queueName)
+            public BankList(String queueName)
             {
               this.queue = new MessageSenderGateway(queueName);
             }

@@ -24,7 +24,7 @@ namespace RabbitMqBank
 
             object oJson = await Input(queue);
 
-            bool success = Output(queue, o);
+           // bool success = Output(queue, o);
 
             string line = Console.ReadLine();
         }
@@ -79,46 +79,6 @@ namespace RabbitMqBank
             }
 
             return jsonObject;
-        }
-       
-        public static bool Output(string queue, object o)
-        {
-            var factory = new ConnectionFactory()
-            {
-                HostName = "datdb.cphbusiness.dk",
-                //VirtualHost = "student",
-                UserName = "student",
-                Password = "cph"
-            };
-
-            try
-            {
-                using (var connection = factory.CreateConnection())
-                using (var channel = connection.CreateModel())
-                {
-                    channel.QueueDeclare(queue: queue,
-                        durable: false,
-                        exclusive: false,
-                        autoDelete: false,
-                        arguments: null);
-
-                    string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(o);
-                    var body = Encoding.UTF8.GetBytes(jsonObject);
-
-                    channel.BasicPublish(exchange: "",
-                        routingKey: queue,
-                        basicProperties: null,
-                        body: body);
-                    Console.WriteLine(" [x] Sent {0}", jsonObject);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
-            return false;
-        }
+        }       
     }
 }
