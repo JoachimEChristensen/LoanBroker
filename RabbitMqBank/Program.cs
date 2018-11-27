@@ -1,4 +1,5 @@
-﻿using RabbitMQ.Client;
+﻿using RabbitMq;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,69 @@ namespace RabbitMqBank
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            while (true)
-            {
-                
-            }
-        }
+            string message = "";
 
+            var factory = new ConnectionFactory()
+            {
+                HostName = "datdb.cphbusiness.dk",
+                UserName = "student",
+                Password = "cph"
+            };
+
+            try
+            {
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: "RabbitMq_bank",
+                        durable: false,
+                        exclusive: false,
+                        autoDelete: false,
+                        arguments: null);
+
+                    var consumer = new EventingBasicConsumer(channel);
+                    consumer.Received += (model, ea) =>
+                    {
+                        double intrest_rate = 2 + new Random().Next(10) + new Random().NextDouble();
+                        string response = "";
+                        response = "{\"interestRate\":" + intrest_rate + "}";
+
+                        var body = ea.Body;
+                        var props = ea.BasicProperties;
+                        var replyProps = channel.CreateBasicProperties();
+                        replyProps.CorrelationId = props.CorrelationId;
+
+                        try
+                        {
+                            body = Encoding.UTF8.GetBytes(response);
+                            message = Encoding.UTF8.GetString(body);
+                            Console.WriteLine(" [x] Received {0}", message);
+                        }
+                        catch(Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            response = "";
+                        }
+                        finally
+                        {
+                            var responseBytes = Encoding.UTF8.GetBytes(response);
+                            channel.BasicPublish(exchange: "", routingKey: props.ReplyTo, basicProperties: replyProps, body: responseBytes);
+                            channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                        }   
+                    };
+                }          
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }             
+        }
+    } 
+}
+        /*
         private static string RPC_QUEUE_NAME = "cphbusiness.bankRabbit";
         private static string queueName = "bank.rabbit.translator";
         private static string exchangeName = "translator.exch";
@@ -87,5 +143,3 @@ namespace RabbitMqBank
 
             return jsonObject;
         }       */
-    }
-}
