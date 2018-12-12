@@ -5,9 +5,7 @@ using System.Linq;
 using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-using MessageGateway;
 using Newtonsoft.Json;
-using RecipientList;
 using RecipientList.Model;
 
 namespace Loan_Broker_elements
@@ -25,21 +23,11 @@ namespace Loan_Broker_elements
                 string ssn = bank.ssn;
                 double loanAmount = bank.loanAmount;
                 int loanDuration = bank.loanDuration;
-
-                Recipient recipient = new Recipient();
-                List<string> item = new List<string>();
-                for (int number = 0; number < bank.Banks.Count; number++)
-                {                   
-                    item.Add((recipient.GetBankQueues(ssn, creditScore, loanDuration, loanAmount)).ToString());
-                }
-
-                Message msg = new Message
+                
+                foreach ( Bank banks in bank.Banks)
                 {
-                    Body = item
-                };
-
-                JsonFormatter jsonFormatter = new JsonFormatter();
-                jsonFormatter.Write(msg, bank);
+                    bank.Banks.Add(bank);                   
+                }
 
                 string jsonObject = JsonConvert.SerializeObject(bank);
 

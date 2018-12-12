@@ -35,16 +35,16 @@ namespace RuleBase
             {
                 if ((loanAmount >= (double)18) && (loanAmount <= (double)999) && (creditScore >= 500))
                 {
-                    banks.Add(new Bank("RabbbitMQ 1 Bank", "bank1"));
-                    banks.Add(new Bank("RabbbitMQ JSON Bank", "bankjson"));                   
+                    banks.Add(new Bank("RabbbitMQ Rest Bank", "bankRest"));
+                    banks.Add(new Bank("RabbbitMQ JSON Bank", "bankJson"));                   
                 }
 
                 if ((loanAmount >= (double)999) && (creditScore >= 600))
                 {
-                    banks.Add(new Bank("RabbbitMQ XML Bank", "bankxml"));                  
+                    banks.Add(new Bank("RabbbitMQ XML Bank", "bankXml"));                  
                 }
 
-                banks.Add(new Bank("RabbbitMQ 2 Bank", "bank2"));
+                banks.Add(new Bank("RabbbitMQ rabbit Bank", "bankRabbit"));
             }
 
             return banks;

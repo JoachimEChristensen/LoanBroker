@@ -12,6 +12,7 @@ namespace RecipientList.Model
         public string ssn { get; set; }
         public double loanAmount { get; set; }
         public int loanDuration { get; set; }
+
         public List<Bank> Banks { get; set; }
 
         public Bank()
@@ -26,5 +27,5 @@ namespace RecipientList.Model
             this.loanAmount = loanAmount;
             this.loanDuration = loanDuration;
         }
-    }
+  }
 }

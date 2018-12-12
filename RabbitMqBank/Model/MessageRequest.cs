@@ -18,7 +18,7 @@ namespace RabbitMqBank.Model
 
         public MessageRequest()
         {
-
+            
         }
     }
 }
