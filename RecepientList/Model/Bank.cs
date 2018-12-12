@@ -8,10 +8,10 @@ namespace RecipientList.Model
 {
     class Bank
     {
-        public int creditScore { get; set; }
-        public string ssn { get; set; }
-        public double loanAmount { get; set; }
-        public int loanDuration { get; set; }
+        public int CreditScore { get; set; }
+        public string Ssn { get; set; }
+        public double LoanAmount { get; set; }
+        public int LoanDuration { get; set; }
         public string name { get; set; }
         public string bankId { get; set; }
 
@@ -24,10 +24,10 @@ namespace RecipientList.Model
 
         public Bank(int creditScore, string ssn, double loanAmount, int loanDuration, string name, string bankId)
         {
-            this.creditScore = creditScore;
-            this.ssn = ssn;
-            this.loanAmount = loanAmount;
-            this.loanDuration = loanDuration;
+            this.CreditScore = creditScore;
+            this.Ssn = ssn;
+            this.LoanAmount = loanAmount;
+            this.LoanDuration = loanDuration;
             this.name = name;
             this.bankId = bankId;
         }

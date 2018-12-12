@@ -19,10 +19,10 @@ namespace Loan_Broker_elements
                 string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
 
                 Bank bank = JsonConvert.DeserializeObject<Bank>(input);
-                int creditScore = bank.creditScore;
-                string ssn = bank.ssn;
-                double loanAmount = bank.loanAmount;
-                int loanDuration = bank.loanDuration;
+                int creditScore = bank.CreditScore;
+                string ssn = bank.Ssn;
+                double loanAmount = bank.LoanAmount;
+                int loanDuration = bank.LoanDuration;
                 string name = bank.name;
                 string bankId = bank.bankId;
 
