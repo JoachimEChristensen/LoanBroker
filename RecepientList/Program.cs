@@ -23,6 +23,8 @@ namespace Loan_Broker_elements
                 string ssn = bank.ssn;
                 double loanAmount = bank.loanAmount;
                 int loanDuration = bank.loanDuration;
+                string name = bank.name;
+                string bankId = bank.bankId;
                 
                 foreach ( Bank banks in bank.Banks)
                 {
