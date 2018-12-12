@@ -25,13 +25,15 @@ namespace Loan_Broker_elements
                 int loanDuration = bank.loanDuration;
                 string name = bank.name;
                 string bankId = bank.bankId;
-                
-                foreach ( Bank banks in bank.Banks)
+
+                List<Bank> recipientList = new List<Bank>();
+
+                foreach (var item in bank.Banks)
                 {
-                    bank.Banks.Add(bank);                   
+                    recipientList.Add(item);     
                 }
 
-                string jsonObject = JsonConvert.SerializeObject(bank);
+                string jsonObject = JsonConvert.SerializeObject(recipientList);
 
                 bool success = RabbitMq.RabbitMq.Input("PBAG3_Translator", jsonObject);
             }
