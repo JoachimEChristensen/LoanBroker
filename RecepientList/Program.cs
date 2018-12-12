@@ -19,6 +19,7 @@ namespace Loan_Broker_elements
                 string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
 
                 Bank bank = JsonConvert.DeserializeObject<Bank>(input);
+               
                 int creditScore = bank.CreditScore;
                 string ssn = bank.Ssn;
                 double loanAmount = bank.LoanAmount;
@@ -35,7 +36,9 @@ namespace Loan_Broker_elements
 
                 string jsonObject = JsonConvert.SerializeObject(recipientList);
 
-                bool success = RabbitMq.RabbitMq.Input("PBAG3_Translator", jsonObject);
+                Console.WriteLine(jsonObject);
+
+                //bool success = RabbitMq.RabbitMq.Input("PBAG3_Translator", jsonObject);
             }
         }   
     }

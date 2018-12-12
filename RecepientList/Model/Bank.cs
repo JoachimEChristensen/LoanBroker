@@ -19,7 +19,7 @@ namespace RecipientList.Model
 
         public Bank()
         {
-            this.Banks = new List<Bank>();
+
         }
 
         public Bank(int creditScore, string ssn, double loanAmount, int loanDuration, string name, string bankId)
