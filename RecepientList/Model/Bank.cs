@@ -6,30 +6,24 @@ using System.Threading.Tasks;
 
 namespace RecipientList.Model
 {
-    class Bank
+    class BankObject
     {
         public int CreditScore { get; set; }
         public string Ssn { get; set; }
         public double LoanAmount { get; set; }
         public int LoanDuration { get; set; }
-        public string name { get; set; }
-        public string bankId { get; set; }
+        public Bank[] Banks { get; set; }
 
-        public List<Bank> Banks { get; set; }
-
-        public Bank()
+        public class Bank
         {
-
+            public string name { get; set; }
+            public string bankId { get; set; }
+            public int creditScore { get; set; }
+            public string ssn { get; set; }
+            public double loanAmount { get; set; }
+            public int loanDuration { get; set; }
         }
-
-        public Bank(int creditScore, string ssn, double loanAmount, int loanDuration, string name, string bankId)
-        {
-            this.CreditScore = creditScore;
-            this.Ssn = ssn;
-            this.LoanAmount = loanAmount;
-            this.LoanDuration = loanDuration;
-            this.name = name;
-            this.bankId = bankId;
-        }
-  }
+    }
 }
+
+

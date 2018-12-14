@@ -11,35 +11,64 @@ using RecipientList.Model;
 namespace Loan_Broker_elements
 {
     class Program
-    {      
+    {
         static void Main(string[] args)
         {
             while (true)
             {
                 string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
 
-                Bank bank = JsonConvert.DeserializeObject<Bank>(input);
-               
-                int creditScore = bank.CreditScore;
-                string ssn = bank.Ssn;
-                double loanAmount = bank.LoanAmount;
-                int loanDuration = bank.LoanDuration;
-                string name = bank.name;
-                string bankId = bank.bankId;
-
-                List<Bank> recipientList = new List<Bank>();
+                BankObject bank = JsonConvert.DeserializeObject<BankObject>(input);
+                int creditScore;
+                string ssn;
+                double loanAmount;
+                int loanDuration;
+                
+                List<BankObject.Bank> recipientList = new List<BankObject.Bank>();
 
                 foreach (var item in bank.Banks)
                 {
-                    recipientList.Add(item);     
+                    recipientList.Add(item);                   
+                    creditScore = bank.CreditScore;
+                    ssn = bank.Ssn;
+                    loanAmount = bank.LoanAmount;
+                    loanDuration = bank.LoanDuration;
                 }
+               
+                int number = recipientList.Count();
+                string jsonObject;
+                bool success;
 
-                string jsonObject = JsonConvert.SerializeObject(recipientList);
+                for (int i = 0; i < number; i++)
+                {
+                    switch(recipientList[i].bankId)
+                    {
+                        case "bankRest":
+                            jsonObject = JsonConvert.SerializeObject(recipientList[i]);
+                            success = RabbitMq.RabbitMq.Input("PBAG3_Translator_RestBank", jsonObject);
+                            break;
 
-                Console.WriteLine(jsonObject);
+                        case "bankJson":
+                            jsonObject = JsonConvert.SerializeObject(recipientList[i]);
+                            success = RabbitMq.RabbitMq.Input("PBAG3_Translator_JsonBank", jsonObject);
+                            break;
 
-                //bool success = RabbitMq.RabbitMq.Input("PBAG3_Translator", jsonObject);
+                        case "bankXml":
+                            jsonObject = JsonConvert.SerializeObject(recipientList[i]);
+                            success = RabbitMq.RabbitMq.Input("PBAG3_Translator_XmlBank", jsonObject);
+                            break;
+
+                        case "bankRabbit":
+                            jsonObject = JsonConvert.SerializeObject(recipientList[i]);
+                            success = RabbitMq.RabbitMq.Input("PBAG3_Translator_RabbitBank", jsonObject);
+                            break;
+
+                        default:
+                            Console.WriteLine("Error! No Bank existed");
+                            break;
+                    }               
+                }
             }
-        }   
+        }
     }
 }
