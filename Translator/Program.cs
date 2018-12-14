@@ -17,6 +17,7 @@ namespace Translator
         {
             foreach (string queue in Queues)
             {
+                //new PickBank(BasicQueue + queue);// for test
                 Task.Factory.StartNew(() => new PickBank(BasicQueue + queue));
             }
             Task.Delay(-1).Wait();

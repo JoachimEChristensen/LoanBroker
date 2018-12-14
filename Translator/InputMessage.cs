@@ -12,7 +12,7 @@ namespace Translator
         public string BankId { get; set; }
         public int CreditScore { get; set; }
         public string Ssn { get; set; }
-        public float LoanAmount { get; set; }
+        public double LoanAmount { get; set; }
         public int LoanDuration { get; set; }
     }
 

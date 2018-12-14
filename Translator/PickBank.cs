@@ -19,19 +19,19 @@ namespace Translator
 
                 switch (queue)
                 {
-                    case "RestBank":
-                        Rest.SendRequest(inputMessage);
+                    case "PBAG3_Translator_RestBank":
+                        Rest.SendRequest(inputMessage).Wait();
                         break;
 
-                    case "JsonBank":
+                    case "PBAG3_Translator_JsonBank":
                         Json.SendRequest(inputMessage);
                         break;
 
-                    case "XmlBank":
+                    case "PBAG3_Translator_XmlBank":
                         Xml.SendRequest(inputMessage);
                         break;
 
-                    case "RabbitBank":
+                    case "PBAG3_Translator_RabbitBank":
                         Rabbit.SendRequest(inputMessage);
                         break;
                 }
