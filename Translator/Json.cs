@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Translator
 {
-    class Json
+    static class Json
     {
-        public void SendRequest()
+        public static void SendRequest(InputMessage inputMessage)
         {
             //example:
             //{"ssn":1605789787,"creditScore":598,"loanAmount":10.0,"loanDuration":360}

@@ -19,23 +19,19 @@ namespace Loan_Broker_elements
                 string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
 
                 BankObject bank = JsonConvert.DeserializeObject<BankObject>(input);
-                int creditScore;
-                string ssn;
-                double loanAmount;
-                int loanDuration;
-                
+
                 List<BankObject.Bank> recipientList = new List<BankObject.Bank>();
 
                 foreach (var item in bank.Banks)
                 {
-                    recipientList.Add(item);                   
-                    creditScore = bank.CreditScore;
-                    ssn = bank.Ssn;
-                    loanAmount = bank.LoanAmount;
-                    loanDuration = bank.LoanDuration;
+                    item.creditScore = bank.CreditScore;
+                    item.ssn = bank.Ssn;
+                    item.loanAmount = bank.LoanAmount;
+                    item.loanDuration = bank.LoanDuration;
+                    recipientList.Add(item);
                 }
-               
-                int number = recipientList.Count();
+
+                int number = recipientList.Count;
                 string jsonObject;
                 bool success;
 
@@ -66,7 +62,7 @@ namespace Loan_Broker_elements
                         default:
                             Console.WriteLine("Error! No Bank existed");
                             break;
-                    }               
+                    }
                 }
             }
         }

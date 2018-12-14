@@ -8,20 +8,12 @@ namespace Translator
 {
     class InputMessage
     {
-        public int creditScore { get; set; }
-        public string ssn { get; set; }
-        public float loanAmount { get; set; }
-        public int loanDuration { get; set; }
-        public Bank[] Banks { get; set; }
-    }
-
-    public class Bank
-    {
-        public int creditScore { get; set; }
-        public object ssn { get; set; }
-        public float loanAmount { get; set; }
-        public int loanDuration { get; set; }
-        public object[] Banks { get; set; }
+        public string Name { get; set; }
+        public string BankId { get; set; }
+        public int CreditScore { get; set; }
+        public string Ssn { get; set; }
+        public float LoanAmount { get; set; }
+        public int LoanDuration { get; set; }
     }
 
 }

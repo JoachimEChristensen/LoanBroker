@@ -47,7 +47,7 @@ namespace RabbitMq
                         routingKey: queue,
                         basicProperties: props,
                         body: body);
-                    Console.WriteLine(" [x] Sent {0}", jsonString);
+                    Console.WriteLine(" [x] Queue: {0} Sent: {1}", queue, jsonString);
                 }
 
                 return true;
@@ -94,7 +94,7 @@ namespace RabbitMq
                         var body = ea.Body;
                         message = Encoding.UTF8.GetString(body);
 
-                        Console.WriteLine(" [x] Received {0}", message);
+                        Console.WriteLine(" [x] Queue: {0} Received: {1}", queue, message);
                         channel.BasicAck(ea.DeliveryTag, false);
 
                         messageReceived = true;
@@ -103,7 +103,7 @@ namespace RabbitMq
 
                     while (!messageReceived)
                     {
-                        await Task.Delay(1000);
+                        await Task.Delay(1);
                     }
                 }
             }

@@ -4,34 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Translator
 {
     class Program
     {
-        
+        private const string BasicQueue = "PBAG3_Translator_";
+        private static readonly List<string> Queues = new List<string> {"RestBank", "JsonBank", "XmlBank", "RabbitBank"};
 
         static void Main(string[] args)
         {
-            while (true)
+            foreach (string queue in Queues)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_Translator").Result;
-                
-                //convert from JSON to object
-                //fix InputMessage class
-
-                //Thread thread = new Thread(() => PickBanks("object from string"));
-                //thread.Start();
+                Task.Factory.StartNew(() => new PickBank(BasicQueue + queue));
             }
-        }
-
-        private static void PickBanks(string someObject)
-        {
-            //check list of banks and foreach
-            //RabbbitMQ 1 Bank
-            //RabbbitMQ 2 Bank
-            //RabbbitMQ JSON Bank
-            //RabbbitMQ XML Bank
+            Task.Delay(-1).Wait();
         }
     }
 }

@@ -9,9 +9,9 @@ using System.Xml.Serialization;
 
 namespace Translator
 {
-    class Xml
+    static class Xml
     {
-        public void SendRequest()
+        public static void SendRequest(InputMessage inputMessage)
         {
             //example:
             //< LoanRequest >

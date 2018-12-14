@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Translator
 {
-    class Rabbit
+    static class Rabbit
     {
-        public void SendRequest()
+        public static void SendRequest(InputMessage inputMessage)
         {
 
         }

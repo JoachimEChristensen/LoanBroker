@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Translator
 {
-    class Web
+    static class Rest
     {
-        public void SendRequest()
+        public static void SendRequest(InputMessage inputMessage)
         {
 
         }
