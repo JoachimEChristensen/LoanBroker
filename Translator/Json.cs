@@ -10,8 +10,11 @@ namespace Translator
     {
         public static void SendRequest(InputMessage inputMessage)
         {
-            //example:
-            //{"ssn":1605789787,"creditScore":598,"loanAmount":10.0,"loanDuration":360}
+            inputMessage.Ssn = inputMessage.Ssn.Replace("-", "");
+
+            string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(new {ssn = inputMessage.Ssn, creditScore = inputMessage.CreditScore, loanAmount = inputMessage.LoanAmount, loanDuration = inputMessage.LoanDuration});
+
+            bool success = RabbitMq.RabbitMq.Input("", jsonObject, "cphbusiness.bankJSON", "PBAG3_Normalizer");
         }
     }
 }

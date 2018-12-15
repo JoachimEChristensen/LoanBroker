@@ -15,9 +15,10 @@ namespace RabbitMq
         /// </summary>
         /// <param name="queue">The queue to send the object on</param>
         /// <param name="jsonString">The JSON string to send</param>
+        /// <param name="exchange">The exchange to send on (optional), if not empty then the queue will be ignored</param>
         /// <param name="replyToQueue">The queue the receiver should respond on (optional)</param>
         /// <returns>Boolean</returns>
-        public static bool Input(string queue, string jsonString, string replyToQueue = "")
+        public static bool Input(string queue, string jsonString, string exchange = "", string replyToQueue = "")
         {
             var factory = new ConnectionFactory()
             {
@@ -31,23 +32,36 @@ namespace RabbitMq
                 using (var connection = factory.CreateConnection())
                 using (var channel = connection.CreateModel())
                 {
-                    channel.QueueDeclare(queue: queue,
-                        durable: false,
-                        exclusive: false,
-                        autoDelete: false,
-                        arguments: null);
-
+                    if (string.IsNullOrEmpty(exchange))
+                    {
+                        channel.QueueDeclare(queue: queue,
+                            durable: false,
+                            exclusive: false,
+                            autoDelete: false,
+                            arguments: null);
+                    }
 
                     var body = Encoding.UTF8.GetBytes(jsonString);
 
                     IBasicProperties props = channel.CreateBasicProperties();
                     props.ReplyTo = replyToQueue;
 
-                    channel.BasicPublish(exchange: "",
-                        routingKey: queue,
-                        basicProperties: props,
-                        body: body);
-                    Console.WriteLine(" [x] Queue: {0} Sent: {1}", queue, jsonString);
+                    if (string.IsNullOrEmpty(exchange))
+                    {
+                        channel.BasicPublish(exchange: "",
+                            routingKey: queue,
+                            basicProperties: props,
+                            body: body);
+                        Console.WriteLine(" [x] Queue: {0} Sent: {1}", queue, jsonString);
+                    }
+                    else
+                    {
+                        channel.BasicPublish(exchange: exchange,
+                            routingKey: "",
+                            basicProperties: props,
+                            body: body);
+                        Console.WriteLine(" [x] Exchange: {0} Sent: {1}", exchange, jsonString);
+                    }
                 }
 
                 return true;
