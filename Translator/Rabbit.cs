@@ -12,7 +12,7 @@ namespace Translator
         {
             string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(inputMessage);
 
-            bool success = RabbitMq.RabbitMq.Input("PBAG3_TransToBankRabbit", jsonObject);
+            bool success = RabbitMq.RabbitMq.Input("PBAG3_BankRabbit", jsonObject);
         }
     }
 }

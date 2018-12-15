@@ -17,7 +17,7 @@ namespace RabbitMqBank
         {
             while(true)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_TransToBankRabbit").Result;
+                string input = RabbitMq.RabbitMq.Output("PBAG3_BankRabbit").Result;
 
                 MessageRequest messageRequest = JsonConvert.DeserializeObject<MessageRequest>(input);
 
@@ -31,7 +31,7 @@ namespace RabbitMqBank
 
                 string jsonObject = JsonConvert.SerializeObject(messageResponce);
 
-                bool success = RabbitMq.RabbitMq.Input("PBAG3_BankRabbit", jsonObject);
+                bool success = RabbitMq.RabbitMq.Input("PBAG3_Normalizer", jsonObject);
             }
         }
     } 
