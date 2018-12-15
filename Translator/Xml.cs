@@ -21,21 +21,42 @@ namespace Translator
             //    < loanDuration > 1973 - 01 - 01 01:00:00.0 CET </ loanDuration >
             //</ LoanRequest >
 
-            //XmlSerializer xmlSerializer = new XmlSerializer(typeof(/*myObject*/));
+            DateTime dateTime = new DateTime(1970, 1, 1);
+            dateTime = dateTime.AddMonths(inputMessage.LoanDuration);
 
-            //var subReq = new MyObject();
-            //var xml = "";
+            LoanRequest loanRequest = new LoanRequest
+            {
+                ssn = inputMessage.Ssn.Replace("-", ""),
+                creditScore = inputMessage.CreditScore,
+                loanAmount = inputMessage.LoanAmount,
+                loanDuration = dateTime.ToString("s", System.Globalization.CultureInfo.InvariantCulture).Replace("T", " ") + ".0 CET"
+            };
 
-            //using (var sww = new StringWriter())
-            //{
-            //    using (XmlWriter writer = XmlWriter.Create(sww))
-            //    {
-            //        xsSubmit.Serialize(writer, subReq);
-            //        xml = sww.ToString(); // Your XML
-            //    }
-            //}
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(LoanRequest));
+
+            var xmlObject = "";
+
+            using (var sww = new StringWriter())
+            {
+                using (XmlWriter writer = XmlWriter.Create(sww))
+                {
+                    xmlSerializer.Serialize(writer, loanRequest);
+                    xmlObject = sww.ToString(); // Your XML
+                }
+            }
 
             //https://stackoverflow.com/questions/4123590/serialize-an-object-to-xml
+
+
+            bool success = RabbitMq.RabbitMq.Input("", xmlObject, "cphbusiness.bankXML", "PBAG3_Normalizer");
         }
+    }
+
+    public class LoanRequest
+    {
+        public string ssn { get; set; }
+        public int creditScore { get; set; }
+        public double loanAmount { get; set; }
+        public string loanDuration { get; set; }
     }
 }

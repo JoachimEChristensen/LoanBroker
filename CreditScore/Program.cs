@@ -111,7 +111,7 @@ namespace CreditScore
             if (loanAmount == "")
             {
                 Random random = new Random();
-                loanAmount = (random.NextDouble() * 1000).ToString("0.##");
+                loanAmount = (random.NextDouble() * 1500).ToString("0.##");
             }
 
             Console.WriteLine("Loan amount: " + loanAmount);
@@ -122,7 +122,7 @@ namespace CreditScore
         {
             string loanDuration = "";
 
-            Console.WriteLine("Input loan amount:");
+            Console.WriteLine("Input loan duration:");
 
             Match match = Regex.Match(loanDuration, @"^\d+$");
             bool enter = false;
