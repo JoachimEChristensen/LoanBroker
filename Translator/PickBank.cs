@@ -13,7 +13,7 @@ namespace Translator
         {
             while (true)
             {
-                string input = RabbitMq.RabbitMq.Output(queue).Result;
+                string input = RabbitMq.RabbitMq.Output(queue);
 
                 InputMessage inputMessage = JsonConvert.DeserializeObject<InputMessage>(input);
 

@@ -4,17 +4,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoanBroker", "LoanBroker\LoanBroker.csproj", "{61A2A741-E101-4DD6-9835-5251DE5D2A88}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09} = {3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "Aggregator\Aggregator.csproj", "{0397AE03-6398-44A6-9F72-EFA70F7D2D51}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09} = {3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banks", "Banks\Banks.csproj", "{E8767B6B-0969-4B42-AE75-FE0E68DACB64}"
 	ProjectSection(ProjectDependencies) = postProject
+		{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09} = {3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}
 		{CFDF12F8-2BF0-4065-A054-17E9362E46EF} = {CFDF12F8-2BF0-4065-A054-17E9362E46EF}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditScore", "CreditScore\CreditScore.csproj", "{82B63E4A-E37C-457E-80E6-764B9004B8EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Normalizer", "Normalizer\Normalizer.csproj", "{2D02C2B4-6E69-4F49-BF9E-E2FDB638760C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09} = {3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipientList", "RecepientList\RecipientList.csproj", "{F65F9E1A-3599-4646-8C8D-87C50A896224}"
 EndProject
@@ -25,6 +35,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMqBank", "RabbitMqBank\RabbitMqBank.csproj", "{28D8B809-4A3D-46C5-81EE-94923BF2287E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translator", "Translator\Translator.csproj", "{43165C20-AB84-4134-9DD5-37942470362B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09} = {3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMq", "RabbitMq\RabbitMq.csproj", "{3BC50A6A-D6F5-4798-947E-B7F8A20A5C09}"
 EndProject

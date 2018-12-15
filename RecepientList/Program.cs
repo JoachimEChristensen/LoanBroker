@@ -18,7 +18,7 @@ namespace RecipientList
 
             while (true)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
+                string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient");
 
                 BankObject bank = JsonConvert.DeserializeObject<BankObject>(input);
 

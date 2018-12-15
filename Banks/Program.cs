@@ -15,7 +15,7 @@ namespace Banks
 
             while (true)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_GetBanks").Result;
+                string input = RabbitMq.RabbitMq.Output("PBAG3_GetBanks");
 
                 RuleBaseWebService RBWS = new RuleBaseWebService();
                 CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);

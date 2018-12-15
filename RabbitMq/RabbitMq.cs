@@ -79,7 +79,7 @@ namespace RabbitMq
         /// </summary>
         /// <param name="queue">The queue to receiver the JSON string on</param>
         /// <returns>JSON string</returns>
-        public static async Task<string> Output(string queue)
+        public static string Output(string queue)
         {
             string message = "";
 
@@ -101,29 +101,22 @@ namespace RabbitMq
                         autoDelete: false,
                         arguments: null);
 
-                    var consumer = new EventingBasicConsumer(channel);
-                    bool messageReceived = false;
-                    consumer.Received += (model, ea) =>
+                    BasicGetResult data = null;
+
+                    while (data == null)
                     {
-                        var body = ea.Body;
-                        message = Encoding.UTF8.GetString(body);
+                        data = channel.BasicGet(queue, false);
 
-                        Console.WriteLine(" [x] Queue: {0} Received: {1}", queue, message);
-                        channel.BasicAck(ea.DeliveryTag, false);
-
-                        messageReceived = true;
-                    };
-                    channel.BasicConsume(queue: queue, consumer: consumer);
-
-                    while (!messageReceived)
-                    {
-                        await Task.Delay(1);
                     }
+
+                    message = Encoding.UTF8.GetString(data.Body);
+                    Console.WriteLine(" [x] Queue: {0} Received: {1}", queue, message);
+                    channel.BasicAck(data.DeliveryTag, false);
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e/*.Message*/);
+                Console.WriteLine(e.Message);
             }
 
             return message;

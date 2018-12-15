@@ -19,7 +19,7 @@ namespace RabbitMqBank
 
             while (true)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_BankRabbit").Result;
+                string input = RabbitMq.RabbitMq.Output("PBAG3_BankRabbit");
 
                 MessageRequest messageRequest = JsonConvert.DeserializeObject<MessageRequest>(input);
 
