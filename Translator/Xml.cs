@@ -13,14 +13,6 @@ namespace Translator
     {
         public static void SendRequest(InputMessage inputMessage)
         {
-            //example:
-            //< LoanRequest >
-            //    < ssn > 12345678 </ ssn >
-            //    < creditScore > 685 </ creditScore >
-            //    < loanAmount > 1000.0 </ loanAmount >
-            //    < loanDuration > 1973 - 01 - 01 01:00:00.0 CET </ loanDuration >
-            //</ LoanRequest >
-
             DateTime dateTime = new DateTime(1970, 1, 1);
             dateTime = dateTime.AddMonths(inputMessage.LoanDuration);
 
@@ -41,12 +33,9 @@ namespace Translator
                 using (XmlWriter writer = XmlWriter.Create(sww))
                 {
                     xmlSerializer.Serialize(writer, loanRequest);
-                    xmlObject = sww.ToString(); // Your XML
+                    xmlObject = sww.ToString();
                 }
             }
-
-            //https://stackoverflow.com/questions/4123590/serialize-an-object-to-xml
-
 
             bool success = RabbitMq.RabbitMq.Input("", xmlObject, "cphbusiness.bankXML", "PBAG3_Normalizer");
         }

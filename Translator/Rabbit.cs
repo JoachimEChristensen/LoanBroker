@@ -10,7 +10,9 @@ namespace Translator
     {
         public static void SendRequest(InputMessage inputMessage)
         {
+            string jsonObject = Newtonsoft.Json.JsonConvert.SerializeObject(inputMessage);
 
+            bool success = RabbitMq.RabbitMq.Input("PBAG3_TransToBankRabbit", jsonObject);
         }
     }
 }
