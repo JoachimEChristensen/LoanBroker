@@ -20,7 +20,7 @@ namespace RestBank.Controllers
         // GET api/values/:loanamount/:loanduration
         public string Get(double loanamount, int loanduration)
         {
-            interestRate = interestRate * (loanduration * 0.3) * (loanamount / 2); 
+            interestRate = interestRate * ((loanduration * 0.3) + (loanamount / 2)); 
             return interestRate.ToString();
         }
 
