@@ -15,6 +15,8 @@ namespace Translator
 
         static void Main(string[] args)
         {
+            Console.Title = typeof(Program).Namespace;
+
             foreach (string queue in Queues)
             {
                 //new PickBank(BasicQueue + queue);// for test

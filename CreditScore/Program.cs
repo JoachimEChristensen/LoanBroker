@@ -12,6 +12,8 @@ namespace CreditScore
     {
         static void Main(string[] args)
         {
+            Console.Title = typeof(Program).Namespace;
+
             CreditScoreService creditScoreService = new CreditScoreService();
             creditScoreService.creditScoreCompleted += CreditScoreCompleted;
 

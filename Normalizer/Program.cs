@@ -10,7 +10,9 @@ namespace Normalizer
     {
         static void Main(string[] args)
         {
-            //string input = RabbitMq.RabbitMq.Output("PBAG3_Normalizer").Result;
+            Console.Title = typeof(Program).Namespace;
+
+            string input = RabbitMq.RabbitMq.Output("PBAG3_Normalizer").Result;// send to PBAG3_Aggregator
         }
     }
 }

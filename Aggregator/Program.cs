@@ -10,6 +10,8 @@ namespace Aggregator
     {
         static void Main(string[] args)
         {
+            Console.Title = typeof(Program).Namespace;
+
             int best = 0;
             string bank = "";
             //string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator").Result;

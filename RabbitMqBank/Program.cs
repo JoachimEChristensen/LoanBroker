@@ -15,7 +15,9 @@ namespace RabbitMqBank
     {
         static void Main(string[] args)
         {
-            while(true)
+            Console.Title = typeof(Program).Namespace;
+
+            while (true)
             {
                 string input = RabbitMq.RabbitMq.Output("PBAG3_BankRabbit").Result;
 

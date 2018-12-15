@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RecipientList.Model;
 
-namespace Loan_Broker_elements
+namespace RecipientList
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.Title = typeof(Program).Namespace;
+
             while (true)
             {
                 string input = RabbitMq.RabbitMq.Output("PBAG3_Recipient").Result;
