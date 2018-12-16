@@ -77,6 +77,15 @@ namespace Normalizer
             {
                 if (!_inputMessage.ssn.Contains("-"))
                 {
+                    int zerosToAddInt = 10 - _inputMessage.ssn.Length;
+                    string zerosToAddString = "";
+
+                    for (int i = 0; i < zerosToAddInt; i++)
+                    {
+                        zerosToAddString += "0";
+                    }
+                    _inputMessage.ssn = _inputMessage.ssn.Insert(0, zerosToAddString);
+
                     _inputMessage.ssn = _inputMessage.ssn.Insert(6, "-");
                 }
                 output.Ssn = _inputMessage.ssn;
@@ -85,6 +94,15 @@ namespace Normalizer
             {
                 if (!_inputMessage.Ssn.Contains("-"))
                 {
+                    int zerosToAddInt = 10 - _inputMessage.Ssn.Length;
+                    string zerosToAddString = "";
+
+                    for (int i = 0; i < zerosToAddInt; i++)
+                    {
+                        zerosToAddString += "0";
+                    }
+                    _inputMessage.Ssn = _inputMessage.Ssn.Insert(0, zerosToAddString);
+
                     _inputMessage.Ssn = _inputMessage.Ssn.Insert(6, "-");
                 }
                 output.Ssn = _inputMessage.Ssn;
