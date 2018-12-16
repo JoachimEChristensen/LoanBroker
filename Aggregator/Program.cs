@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +12,25 @@ namespace Aggregator
         static void Main(string[] args)
         {
             Console.Title = typeof(Program).Namespace;
-
-            int best = 0;
-            string bank = "";
-            //string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator").Result;
-            //CreditScoreReport O = JsonConvert.DeserializeObject<CreditScoreReport>(input);
-            List<CreditScoreReport> CSR = new List<CreditScoreReport>();
-            //resource.get(2);
-            //resource.get(3);
-
-            foreach (var CreditScoreReport in CSR)
+            while (true)
             {
-                if (CreditScoreReport.CreditScore < best)
+                int counter = 60000;
+                if (counter > 0) counter--;
+                double best = 9999999999999;
+                bool yeah = true;
+                List<Input> IN = new List<Input>();
+                string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator");
+                Input i = JsonConvert.DeserializeObject<Input>(input);
+                IN.Add(i);
+                if (counter < 0)
                 {
-                    bank = CreditScoreReport.Ssn;
-                    best = CreditScoreReport.CreditScore;
+                    foreach (Input inp in IN)
+                    {
+                        if (inp.InterestRate < best) best = inp.InterestRate;
+                    }
+                    Console.WriteLine("The best quote you can get for your desired loan is " + best);
                 }
             }
-            Console.WriteLine("The best quote you can get for your desired loan is " + best + " from " + bank);
         }
     }
 }
