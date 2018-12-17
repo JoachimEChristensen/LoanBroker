@@ -10,35 +10,75 @@ namespace Aggregator
 {
     class Program
     {
-        static Input best = new Input();
-        static List<Input> IN = new List<Input>();
+        private static double _best = 9999999999999;
+        private static readonly List<Input> Inputs = new List<Input>();
+        private static readonly List<BestQuote> BestQuotes = new List<BestQuote>();
 
         static void Main(string[] args)
         {
             Console.Title = typeof(Program).Namespace;
-            int counter = 60000;
-            if (counter > 0) counter--;
-            Timer timer = new Timer();
-            timer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            timer.Interval = 60000;
-            timer.Enabled = true;
+
+            Task.Factory.StartNew(() => new CheckTime(BestQuotes));
+
             while (true)
             {
-                string input = RabbitMq.RabbitMq.Output("PBAG3_Aggregator");
-                Input i = JsonConvert.DeserializeObject<Input>(input);
-                IN.Add(i);
-                
+                string inputString = RabbitMq.RabbitMq.Output("PBAG3_Aggregator");
+                Input input = JsonConvert.DeserializeObject<Input>(inputString);
+
+                Inputs.Add(input);
+
+                for (var i = 0; i < Inputs.Count; i++)
+                {
+                    BestQuote bestQuote = new BestQuote();
+                    bestQuote.Time = DateTime.Now;
+                    bestQuote.Ssn = Inputs[i].Ssn;
+
+                    _best = Inputs[i].InterestRate;
+
+                    bestQuote.Bestquote = Inputs[i].InterestRate;
+                    if (BestQuotes.All(b => b.Ssn != bestQuote.Ssn))
+                    {
+                        BestQuotes.Add(bestQuote);
+                    }
+                    else
+                    {
+                        foreach (BestQuote quote in BestQuotes)
+                        {
+                            if (quote.Ssn == bestQuote.Ssn && quote.Bestquote > bestQuote.Bestquote && !bestQuote.Given)
+                            {
+                                quote.Bestquote = _best;
+                            }
+                        }
+                    }
+
+                    Inputs.RemoveAt(i);
+                }
             }
         }
+    }
 
-        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+    internal class CheckTime
+    {
+        public CheckTime(List<BestQuote> bestQuotes)
         {
-            best.InterestRate = 9999999999999;
-            foreach (Input inp in IN)
+            while (true)
             {
-                if (inp.InterestRate < best.InterestRate) best = inp;
+                int bestQuotesCount = bestQuotes.Count;
+
+                if (bestQuotesCount > 0)
+                {
+                    for (var i = 0; i < bestQuotesCount; i++)
+                    {
+                        BestQuote bestQuote = bestQuotes[i];
+
+                        if (bestQuote.Time.AddSeconds(10) < DateTime.Now && !bestQuote.Given)
+                        {
+                            Console.WriteLine("The best quote you({0}) can get for your desired loan is {1}", bestQuote.Ssn, bestQuote.Bestquote);
+                            bestQuote.Given = true;
+                        }
+                    }
+                }
             }
-            Console.WriteLine("The best quote that you (" + best.Ssn + ") can get for your desired loan is " + best.InterestRate);
         }
     }
 }
