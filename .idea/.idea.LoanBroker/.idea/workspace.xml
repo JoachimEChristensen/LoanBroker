@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BuildServerSettings">
+    <option name="LOGIN" value="" />
+    <option name="SERVER_URL" value="http://buildserver" />
+    <option name="REMEMBER_ME" value="true" />
+    <option name="USE_IDEA_PROXY_SETTINGS" value="true" />
+    <option name="INSPECTIONS_BUILD_TYPE_IDS" />
+    <option name="DUPLICATES_BUILD_TYPE_IDS" />
+    <option name="COVERAGE_SETTINGS" />
+    <option name="TEST_STATUS_ENABLED" value="true" />
+    <option name="TEST_STATUS_SHOW_SUCCESSFUL" value="false" />
+    <option name="POSTPONE_SUITABLE_CONFIGURATIONS_SEARCH" value="false" />
+    <option name="ARTIFACTS_BUILD_TYPE_IDS" />
+    <option name="PERFORM_COMMIT_IF_SUCCESSFUL" value="true" />
+    <option name="PERFORM_COMMIT_IF_NO_NEW_FAILED_TESTS" value="false" />
+    <option name="REQUEST_CONFIRMATON" value="false" />
+    <option name="PRE_TESTED_COMMIT" value="true" />
+    <option name="FILTER_BY_STATUS" value="false" />
+    <option name="FILTER_MARKED_AS_FIXED" value="false" />
+    <option name="SHOW_CLOSE_PROMPT" value="true" />
+    <option name="TOOL_WINDOW_SELECTED_CONTENT_INDEX" value="0" />
+    <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="59bef111-33b2-4dcd-880a-e1f9b59e4ee1" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Normalizer/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Translator/Xml.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Translator/Rabbit.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Normalizer/InputMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RuleBase/Model/Bank.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/LoanBroker/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RuleBase/RuleBaseWebService.asmx.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RuleBase/RuleBaseWebService.asmx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Aggregator/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Aggregator/Input.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RecepientList/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Aggregator/BestQuote.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/RabbitMqBank/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Translator/Rest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Normalizer/OutputMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Translator/Json.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="140" />
+    <option name="y" value="43" />
+    <option name="width" value="1400" />
+    <option name="height" value="935" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="LoanBroker" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Project.LoanBroker">
+    <configuration name="CreditScore" type="DotNetProject" factoryName=".NET Project" temporary="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/CreditScore/bin/Debug/CreditScore.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CreditScore/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/CreditScore/CreditScore.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6.1" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoanBroker" type="DotNetProject" factoryName=".NET Project" temporary="true">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/LoanBroker/bin/Debug/LoanBroker.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/LoanBroker/bin/Debug" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/LoanBroker/LoanBroker.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value=".NETFramework,Version=v4.6.1" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Project.LoanBroker" />
+        <item itemvalue=".NET Project.CreditScore" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="59bef111-33b2-4dcd-880a-e1f9b59e4ee1" name="Default Changelist" comment="" />
+      <created>1550048779309</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550048779309</updated>
+      <workItem from="1550048782544" duration="4104000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4104000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="140" y="43" width="1400" height="935" extended-state="0" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="REST Client" />
+      <window_info anchor="bottom" id="TeamCity" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Build" weight="0.32977462" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32977462" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32977462" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32977462" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/RuleBase/RuleBaseWebService.asmx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Translator/Xml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <marker date="1545053563643" expanded="false" signature="6:182" ph="..." />
+            <marker date="1545053563643" expanded="true" signature="204:1583" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="227:1358" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="299:1352" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="505:821" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="988:1231" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="1067:1217" ph="{...}" />
+            <marker date="1545053563643" expanded="true" signature="1388:1581" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Translator/Rest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-164">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding>
+            <marker date="1544817945560" expanded="false" signature="6:207" ph="..." />
+            <marker date="1544817945560" expanded="true" signature="229:1630" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="253:1628" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="331:1404" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="473:1240" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="816:1226" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="1272:1394" ph="{...}" />
+            <marker date="1544817945560" expanded="true" signature="1458:1622" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Translator/Rabbit.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1545053563642" expanded="false" signature="6:115" ph="..." />
+            <marker date="1545053563642" expanded="true" signature="137:439" ph="{...}" />
+            <marker date="1545053563642" expanded="true" signature="163:437" ph="{...}" />
+            <marker date="1545053563642" expanded="true" signature="235:431" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Translator/Json.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1545053563641" expanded="false" signature="6:115" ph="..." />
+            <marker date="1545053563641" expanded="true" signature="137:668" ph="{...}" />
+            <marker date="1545053563641" expanded="true" signature="161:666" ph="{...}" />
+            <marker date="1545053563641" expanded="true" signature="233:660" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Normalizer/InputMessage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding>
+            <marker date="1545053563636" expanded="false" signature="6:147" ph="..." />
+            <marker date="1545053563636" expanded="true" signature="169:524" ph="{...}" />
+            <marker date="1545053563636" expanded="true" signature="231:522" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Normalizer/OutputMessage.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1545053563637" expanded="false" signature="6:115" ph="..." />
+            <marker date="1545053563637" expanded="true" signature="137:266" ph="{...}" />
+            <marker date="1545053563637" expanded="true" signature="163:264" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RuleBase/RuleBaseWebService.asmx.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="38" column="94" lean-forward="true" selection-start-line="38" selection-start-column="94" selection-end-line="38" selection-end-column="94" />
+          <folding>
+            <marker date="1544595809464" expanded="false" signature="6:191" ph="..." />
+            <marker date="1544595809464" expanded="true" signature="211:1844" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="218:301" ph="/// Summary description for RuleBaseWebService ... " />
+            <marker date="1544595809464" expanded="true" signature="471:626" ph="/* To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. ... */" />
+            <marker date="1544595809464" expanded="true" signature="695:1842" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="848:997" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="1068:1836" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="1182:1799" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="1299:1506" ph="{...}" />
+            <marker date="1544595809464" expanded="true" signature="1580:1708" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RuleBase/Model/Bank.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <marker date="1543217908419" expanded="false" signature="6:84" ph="..." />
+            <marker date="1543217908419" expanded="true" signature="110:402" ph="{...}" />
+            <marker date="1543217908419" expanded="true" signature="134:400" ph="{...}" />
+            <marker date="1543217908419" expanded="true" signature="248:269" ph="{...}" />
+            <marker date="1543217908419" expanded="true" signature="314:394" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RecepientList/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="66" column="21" lean-forward="true" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+          <folding>
+            <marker date="1545053563640" expanded="false" signature="6:215" ph="..." />
+            <marker date="1545053563640" expanded="true" signature="240:2548" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="260:2546" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="306:2540" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="397:2530" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="706:999" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="1165:2516" ph="{...}" />
+            <marker date="1545053563640" expanded="true" signature="1235:2498" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Normalizer/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding>
+            <marker date="1545053563638" expanded="false" signature="6:187" ph="..." />
+            <marker date="1545053563638" expanded="true" signature="209:3988" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="229:3986" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="326:664" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="417:654" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="557:640" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="698:1969" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="798:1093" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="1125:1932" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="1263:1349" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="1366:1429" ph="/* One of the schools banks failed. ... */" />
+            <marker date="1545053563638" expanded="true" signature="1450:1608" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="1652:1918" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="1738:1844" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="2016:3980" ph="{...}" />
+            <marker date="1545053563638" expanded="false" signature="2096:3429" ph="SSN" />
+            <marker date="1545053563638" expanded="true" signature="2151:2754" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="2219:2692" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="2419:2512" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="2802:3405" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="2870:3343" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="3070:3163" ph="{...}" />
+            <marker date="1545053563638" expanded="false" signature="3443:3799" ph="InterestRate" />
+            <marker date="1545053563638" expanded="true" signature="3523:3613" ph="{...}" />
+            <marker date="1545053563638" expanded="true" signature="3681:3775" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aggregator/Input.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1545053563633" expanded="false" signature="6:115" ph="..." />
+            <marker date="1545053563633" expanded="true" signature="137:258" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="155:256" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aggregator/BestQuote.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1545053563633" expanded="false" signature="6:115" ph="..." />
+            <marker date="1545053563633" expanded="true" signature="137:342" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="159:340" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LoanBroker/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+          <folding>
+            <marker date="1541808046835" expanded="false" signature="6:115" ph="..." />
+            <marker date="1541808046835" expanded="true" signature="137:585" ph="{...}" />
+            <marker date="1541808046835" expanded="true" signature="157:583" ph="{...}" />
+            <marker date="1541808046835" expanded="true" signature="203:577" ph="{...}" />
+            <marker date="1541808046835" expanded="true" signature="226:376" ph="/* The code provided will print ‘Hello World’ to the console. ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RabbitMqBank/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="28" column="17" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
+          <folding>
+            <marker date="1545053563639" expanded="false" signature="6:233" ph="..." />
+            <marker date="1545053563639" expanded="true" signature="257:1109" ph="{...}" />
+            <marker date="1545053563639" expanded="true" signature="277:1106" ph="{...}" />
+            <marker date="1545053563639" expanded="true" signature="323:1100" ph="{...}" />
+            <marker date="1545053563639" expanded="true" signature="414:1090" ph="{...}" />
+            <marker date="1545053563639" expanded="true" signature="790:903" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Aggregator/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-278">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <marker date="1545053563633" expanded="false" signature="6:159" ph="..." />
+            <marker date="1545053563633" expanded="true" signature="181:2679" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="201:1862" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="457:1856" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="617:1846" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="887:1832" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1255:1350" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1375:1773" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1461:1751" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1608:1725" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1892:2677" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1951:2671" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="1986:2661" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="2098:2647" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="2178:2629" ph="{...}" />
+            <marker date="1545053563633" expanded="true" signature="2356:2607" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
